@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRG9999VipRoom - Bot Control Center</title>
+  <style>
+    body {
+      background-color: #1b0f2b;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background-color: #2d1f4d;
+      padding: 20px;
+      border-radius: 15px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #ffcc00;
+    }
+    label, input, select {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .bot-status {
+      background-color: #000;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .active { color: lime; }
+    .inactive { color: red; }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .purple { background-color: #8000ff; color: white; }
+    .orange { background-color: orange; color: black; }
+    .green { background-color: green; color: white; }
+    .red { background-color: red; color: white; }
+    input[type=range] { width: 100%; }
+    input[type=checkbox] { width: auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PRG9999VipRoom</h1>
+
+    <div class="section">
+      <h2>Room Settings</h2>
+      <label>Room Name</label>
+      <input type="text" value="PRG Master Room">
+
+      <label>Room Password</label>
+      <input type="password" value="">
+
+      <label><input type="checkbox" checked> Private Room</label>
+      <label><input type="checkbox"> Allow Spectators</label>
+
+      <label>Max Players: <span id="playersCount">8</span></label>
+      <input type="range" min="1" max="20" value="8" oninput="playersCount.textContent=this.value">
+    </div>
+
+    <div class="section">
+      <h2>Active Bots</h2>
+      <div class="bot-status">B1 - EnemyBot_Rank - <span class="active">Active</span> (192.168.1.101)</div>
+      <div class="bot-status">B2 - EnemyBot_Classic - <span class="active">Active</span> (192.168.1.102)</div>
+      <div class="bot-status">B3 - EnemyBot_Brawl - <span class="inactive">Inactive</span> (192.168.1.103)</div>
+      <button class="btn purple">+ Add Bot</button>
+      <button class="btn orange">Randomize</button>
+      <button class="btn red">Remove All</button>
+    </div>
+
+    <div class="section">
+      <h2>Enemy Bot Controls</h2>
+      <label>Bot Aggressiveness: <span id="agg">65</span></label>
+      <input type="range" min="0" max="100" value="65" oninput="agg.textContent=this.value">
+
+      <label>Bot Movement Speed: <span id="speed">80</span></label>
+      <input type="range" min="0" max="100" value="80" oninput="speed.textContent=this.value">
+
+      <label>Bot Spawn Rate: <span id="spawn">40</span></label>
+      <input type="range" min="0" max="100" value="40" oninput="spawn.textContent=this.value">
+
+      <label><input type="checkbox" checked> Enable Bot AI</label>
+      <label><input type="checkbox"> Freeze All Bots</label>
+      <label><input type="checkbox"> Make Bots Friendly</label>
+    </div>
+
+    <div class="section">
+      <h2>Server & VPN Settings</h2>
+      <label>Server IP Address</label>
+      <input type="text" value="192.168.1.105">
+
+      <label>Server Port</label>
+      <input type="text" value="25565">
+
+      <label><input type="checkbox" checked> Enable VPN Protection</label>
+
+      <label>VPN Location</label>
+      <select>
+        <option selected>Japan</option>
+        <option>Singapore</option>
+        <option>USA</option>
+        <option>Germany</option>
+      </select>
+
+      <label>VPN Protocol</label>
+      <select>
+        <option selected>WireGuard</option>
+        <option>OpenVPN</option>
+      </select>
+
+      <div style="margin-top:10px">
+        <span style="color: orange;">VPN: Active (Japan)</span>
+        <span style="color: lime; float: right;">Server: Online</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <button class="btn purple">💾 Save Settings</button>
+      <button class="btn green">▶️ Start Room</button>
+      <button class="btn orange">🔁 Reset Defaults</button>
+    </div>
+  </div>
+</body>
+</html>
